@@ -4,20 +4,21 @@ function validateForm() {
     var t = document.forms["newLocation"]["type"].value;
     if (!objectPlaced || n == null || n == "" || description == null || description == "" || t == null || t == "") {
         //alert("Please enter all information (Name, Description, Type, Location).");
-        alert("Please enter all information");
+        alert("Bitch, don't even try that shit");
         return false;
     }
     else {
         if (t == "0")
             t = "bathroom";
         else if (t == "1")
-            type = "water";
+            t = "water";
         else if (t == "2")
             t = "cycling";
         else
             t = "wifi";
-        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{'lat': markerLat}, {'long': markerLng}, {'type': t}, {'name': n}, {'details': description}], 'post');
+        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{"lat": markerLat}, {"long": markerLng}, {"type": t}, {"details": description}], "post");
     }
+    return false;
 }
 
 
@@ -29,6 +30,11 @@ function getLocation() {
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
+}
+
+function showPosition(position) {
+    position.coords.latitude;
+    position.coords.longitude;  
 }
 
 function newLocation() {
@@ -45,28 +51,28 @@ function post(path, params, method) {
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
-    form.setAttribute("id", "myForm");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-    var length = params.length;
+    length = params.length;
     for (var i = 0; i < length; i++) {
-        for(var key in params[i]) {
-            if(params[i].hasOwnProperty(key)) {
-                console.log(key);
-                console.log(params[i][key]);
-                var hiddenField = document.createElement("input");
-                hiddenField.setAttribute("type", "text");
-                hiddenField.setAttribute("name", key);
-                hiddenField.setAttribute("value", params[i][key]);
+    for(var key in params[i]) {
+        if(params[i].hasOwnProperty(key)) {
+            console.log(key);
+            console.log(params[i][key]);
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[i][key]);
 
-                form.appendChild(hiddenField);
-             }
-        }
+            form.appendChild(hiddenField);
+         }
     }
-    var submitButton = document.createElement("button");
-    submitButton.setAttribute("type", "submit");
-    form.appendChild(submitButton);
+    }
+    //var submitButton = document.createElement("button");
+    //submitButton.setAttribute("type", "submit");
+    //form.appendChild(submitButton);
     document.body.appendChild(form);
+    form.submit();
 }
 
 function httpGetAsync(theUrl, callback) {
