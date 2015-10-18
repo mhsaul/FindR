@@ -91,19 +91,6 @@ function initMap(position) {
     map: map,
     title: 'Hello World!'
   });
-  jQuery.ajax({
-        url: "http://173.250.206.173:8080/findR/php/output/getNodeData.php",
-        type: "POST",
-        data: {lat: 47.65, lng:-122.31 , distance:50},
-        async: false,
-        success: function(data, textStatus, jqXHR) {
-            // do stuff with data
-
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            // do stuff with error
-        }
-    });
 }
     </script>
     <script async defer
