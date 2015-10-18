@@ -3,7 +3,10 @@
     <head>
         <style type="text/css">
             html, body { height: 100%; margin: 0; padding: 0; }
-            #map { height: 70%; width: 90%; display: inline; position:absolute; right:0px;}
+            #map { height: 70%; width: 90%; display: inline; position:absolute; right:0px; }
+            body {
+                font-family: "Futura", sans-serif;
+            }
         </style>
         <link rel="stylesheet" type="text/css" href="../static/style.css">
         <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
@@ -42,13 +45,14 @@
                 </ul>
         </div>
         </div>
-    <div class="btn-group-vertical">
-    <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">Left</button>
-        <button type="button" class="btn btn-default">Middle</button>
-        <button type="button" class="btn btn-default">Right</button>
-    </div>
-    </div>
+    <div id="Nav" class="col-md-2">
+            <p>
+                <button type="Bathrooms" class="btn btn-primary btn-lg btn-block">Bathrooms</button><br>
+                <button type="Water Fountains" class="btn btn-primary btn-lg btn-block">Water Fountains</button><br>
+                <button type="Bike Racks" class="btn btn-primary btn-lg btn-block">Bike Racks</button><br>
+                <button type="Probably Nothing" class="btn btn-primary btn-lg btn-block">Maybe Something?</button>
+            </p>
+        </div>
     <div id="map"></div>
 
     <script type="text/javascript">
