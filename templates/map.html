@@ -5,22 +5,48 @@
       html, body { height: 100%; margin: 0; padding: 0; }
       #map { height: 100%; }
     </style>
+    <script src="../static/locations.js"></script>
   </head>
-  <body>
+  <body onload="getLocation()">
+
     <div id="map"></div>
+
+
+
+
+
+
     <script type="text/javascript">
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initMap);
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+
 
 var map;
-function initMap() {
+function initMap(position) {
   map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
+    center: {lat: position.coords.latitude, lng: position.coords.longitude},
     zoom: 8
   });
 }
-
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2c1j6Fu60pvqyZmQWuosgOdYbq8lBDXc&callback=initMap">
     </script>
-  </body>
+
+
+
+
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="demo"></p>
+
+
+</body>
 </html>
