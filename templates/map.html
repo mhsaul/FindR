@@ -5,9 +5,13 @@
       html, body { height: 100%; margin: 0; padding: 0; }
       #map { height: 100%; width: 80%; }
     </style>
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
     <script src="../static/locations.js"></script>
   </head>
   <body onload="getLocation()" onclick="getLocationClick()">
+    <div class="page-header">
+        <h1>FindR <small>find public resources in your area</small></h1>
+    </div>
 
     <div id="map"></div>
 
@@ -68,7 +72,7 @@ function initMap(position) {
 
 
 <button onclick="getLocation()">Try It</button>
-<span class="glyphicons glyphicons-bicycle"></span>
+<span class="glyphicons glyphicons-bicycle">h.</span>
 
 <p id="demo"></p>
 
