@@ -7,6 +7,11 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="FindR.Place"
     mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Comment" Tapped="CommentAdd_Tapped"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot Title="{Binding Name}">
@@ -16,7 +21,7 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <Maps:MapControl x:Name="map" ZoomLevel="15"/>
+                    <Maps:MapControl x:Name="map" ZoomLevel="15" MapServiceToken="y5LOol3gMBejfMCgOHqB~pPaVfTGa5srXL9gZSp3v5w~AqoGCrppgpQ3KQr4OVnxCFLAcYUcskx2_qChYPnoub1veNPoEwdqmVf1jEivgwiz"/>
                     <TextBlock Grid.Row="1" Text="{Binding Details}" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,12"/>
                 </Grid>
 

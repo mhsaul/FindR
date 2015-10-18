@@ -46,6 +46,8 @@ namespace FindR.ViewModels
                     }
                     var components = item.Split(new string[] { "$$$$$" }, StringSplitOptions.None);
                     PlaceViewModel place = new PlaceViewModel();
+                    string idraw = components[0].Replace("\n", "");
+                    place.Id = int.Parse(idraw);
                     place.Lat = double.Parse(components[1]);
                     place.Lon = double.Parse(components[2]);
                     place.Type = components[3];

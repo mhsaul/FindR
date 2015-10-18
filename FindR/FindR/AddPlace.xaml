@@ -37,7 +37,7 @@
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <ToggleSwitch x:Name="deviceLocation" Toggled="Location_Toggled">Use Device Location</ToggleSwitch>
-                    <Maps:MapControl x:Name="locMap" Grid.Row="1" MapTapped="Map_Tapped"/>
+                    <Maps:MapControl x:Name="locMap" Grid.Row="1" MapTapped="Map_Tapped" MapServiceToken="y5LOol3gMBejfMCgOHqB~pPaVfTGa5srXL9gZSp3v5w~AqoGCrppgpQ3KQr4OVnxCFLAcYUcskx2_qChYPnoub1veNPoEwdqmVf1jEivgwiz" ZoomLevel="15"/>
                 </Grid>          
 
             </PivotItem>

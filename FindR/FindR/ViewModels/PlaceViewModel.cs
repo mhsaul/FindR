@@ -10,6 +10,20 @@ namespace FindR.ViewModels
 {
     public class PlaceViewModel : INotifyPropertyChanged
     {
+        private int _id;
+        public int Id {
+            get { return _id; }
+            set
+            {
+                if (_id != value)
+                {
+                    NotifyPropertyChanged(nameof(Id));
+                    _id = value;
+                }
+            }
+        }
+
+
         public int index = -1; 
 
         double _lat;
@@ -34,7 +48,7 @@ namespace FindR.ViewModels
             {
                 if (_lon != value)
                 {
-                    NotifyPropertyChanged(nameof(Lat));
+                    NotifyPropertyChanged(nameof(Lon));
                     _lon = value;
                 }
             }

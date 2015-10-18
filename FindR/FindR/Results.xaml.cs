@@ -67,7 +67,12 @@ namespace FindR
 
         private void SeletionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (listBox.SelectedIndex == -1)
+            {
+                return;
+            }
             Frame.Navigate(typeof(Place), listBox.SelectedIndex);
+            listBox.SelectedIndex = -1;
         }
     }
 }
