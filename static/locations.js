@@ -16,7 +16,7 @@ function validateForm() {
             t = "cycling";
         else
             t = "wifi";
-        post("../php/input/postLocation.php", [{"lat": markerLat}, {"long": markerLng}, {"type": t}, {"name": n}, {"details": description}], "post");
+        post("../php/input/postLocation.php", [{'lat': markerLat}, {'long': markerLng}, {'type': t}, {'name': n}, {'details': description}], 'post');
     }
 }
 
@@ -57,6 +57,8 @@ function post(path, params, method) {
     for(var i = 0; i < l; i++) {
     for(var key in params[i]) {
         if(params[i].hasOwnProperty(key)) {
+            console.log(key);
+            console.log(params[i][key]);
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
