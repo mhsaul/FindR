@@ -16,7 +16,7 @@ function validateForm() {
             t = "cycling";
         else
             t = "wifi";
-        post("../php/input/postLocation.php", [{'lat': markerLat}, {'long': markerLng}, {'type': t}, {'name': n}, {'details': description}], 'post');
+        post("../php/input/postLocation.php", {'lat': markerLat}, 'post');
     }
 }
 
@@ -50,23 +50,19 @@ function post(path, params, method) {
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
-    var l = params.length;
-    console.log(l);
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-    for(var i = 0; i < l; i++) {
-    for(var key in params[i]) {
-        if(params[i].hasOwnProperty(key)) {
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
             console.log(key);
-            console.log(params[i][key]);
+            console.log(params[key]);
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[i][key]);
+            hiddenField.setAttribute("value", params[key]);
 
             form.appendChild(hiddenField);
          }
-    }
     }
 
     document.body.appendChild(form);
