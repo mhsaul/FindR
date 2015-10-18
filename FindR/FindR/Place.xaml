@@ -7,11 +7,11 @@
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
     x:Class="FindR.Place"
     mc:Ignorable="d">
-    <!--<Page.BottomAppBar>
+    <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="Add" Label="Comment" Tapped="CommentAdd_Tapped"/>
         </CommandBar>
-    </Page.BottomAppBar>-->
+    </Page.BottomAppBar>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Pivot Title="{Binding Name}">

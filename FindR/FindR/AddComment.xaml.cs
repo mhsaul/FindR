@@ -40,7 +40,7 @@ namespace FindR
             Frame.GoBack();
         }
 
-        private void Submit_Tapped(object sender, TappedRoutedEventArgs e)
+        private async void Submit_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(comment.Text))
             {
@@ -54,8 +54,9 @@ namespace FindR
                 param.Add("id", id.ToString());
                 try
                 {
-                    client.PostAsync("http://173.250.206.173:8080/findR/php/input/updateComments.php", new FormUrlEncodedContent(param));
-                    new MessageDialog($"Your comment {comment.Text} has been posted.", "Sucess").ShowAsync();
+                    var resp = await client.PostAsync("http://173.250.206.173:8080/findR/php/input/updateComments.php", new FormUrlEncodedContent(param));
+                    var content = await resp.Content.ReadAsStringAsync();
+                    new MessageDialog($"Your comment \"{comment.Text}\" has been posted.", "Sucess").ShowAsync();
                     Frame.GoBack();
                 }
                 catch
