@@ -5,7 +5,30 @@
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
 </head>
 <body>
-    <h1>HELLO</h1>
+    <h1>FIND</h1>
+    
+    <div class="btn-group-vertical" role="group" aria-label="...">
+        <div class="btn-group" role="group" aria-label="...">
+            <form action="/map">
+                <button type="button" onclick="findLocations('Bathroom')" class="btn btn-primary btn-lg">Bathroom</button>
+                <button type="button" onclick="findLocations('Water')" class="btn btn-primary btn-lg">Water</button>
+                <button type="button" onclick="findLocations('Bike Racks')" class="btn btn-primary btn-lg">Bike Racks</button>
+                <button type="button" onclick="findLocations('Bus Stops')" class="btn btn-primary btn-lg">Bus Stops</button>
+            </form>
+        </div>
+    </div>
+
+    <h1>NEW LOCATION</h1>
+    <div class="btn-group-vertical" role="group" aria-label="...">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" onclick="newLocation('Bathroom')" class="btn btn-primary btn-lg">Bathroom</button>
+            <button type="button" onclick="newLocation('Water')" class="btn btn-primary btn-lg">Water</button>
+            <button type="button" onclick="newLocation('Bike Racks')" class="btn btn-primary btn-lg">Bike Racks</button>
+            <button type="button" onclick="newLocation('Bus Stops')" class="btn btn-primary btn-lg">Bus Stops</button>
+        </div>
+    </div>
+    <p id="category">THE CATEGORY IS: </p>
+    <script src="../static/locations.js"></script>
     <script src="../static/jquery-1.11.3.js"></script>
     <script src="../static/bootstrap.min.js"></script>
 </body>
