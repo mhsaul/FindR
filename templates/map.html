@@ -21,11 +21,27 @@
 
 
     <script type="text/javascript">
+  var baseurl = "https://raw.githubusercontent.com/Saulmil/FindR/master/images/";
+  var icons = {
+    toilet: {
+      icon: baseurl + "toilet.png"
+    },
+    water: {
+      icon: baseurl + "water.png"
+    },
+    cycling: {
+      icon: baseurl + "cycling.png"
+    },
+    wifi: {
+      icon: baseurl + "wifi.png"
+    }
+  };
+    console.log(icons.toilet)
 function getLocationClick() {
     google.maps.event.addListener(map, 'click', function(event) {
-       marker = new google.maps.Marker({position: event.latLng, map: map});
+       marker = new google.maps.Marker({position: event.latLng, map: map, icon: icons.toilet.icon});
        latLng = {lat: marker.position.lat(), lng: marker.position.lng()}
-       console.log(latLng)
+       //console.log(latLng)
   });
 }
 
