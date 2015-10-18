@@ -28,25 +28,13 @@
                     <li><textarea class="form-control" placeholder="Description" rows="4" cols="35"></textarea>
                     <li>
                         <div class="form-group">
-                            <select class="form-control" id="sel1" size=4>
-                                <option>Bathroom</option>
-                                <option>Water</option>
-                                <option>Bike Rack</option>
-                                <option>Wifi</option>
+                            <select class="form-control" id="type" size=4>
+                                <option value="0" SELECTED>Bathroom</option>
+                                <option value="1">Water</option>
+                                <option value="2">Bike Rack</option>
+                                <option value="3">Wifi</option>
                             </select>
                         </div>
-                        <!--<div class="radio">
-                          <label><input id="bathroom" type="radio" name="optradio" checked="checked">Bathroom</label>
-                        </div>
-                        <div class="radio">
-                            <label><input id="water" type="radio" name="optradio">Water Fountains</label>
-                        </div>
-                        <div class="radio">
-                              <label><input id="cycling" type="radio" name="optradio">Cycling</label>
-                        </div>
-                        <div class="radio">
-                              <label><input id="wifi" type="radio" name="optradio">Wifi</label>
-                        </div>-->
                     </li>
                     <li><input type="submit" class="btn btn-default" value="Submit"></li>
                     </form>
@@ -66,7 +54,9 @@
     console.log(icons.toilet)
 function getLocationClick() {
     google.maps.event.addListener(map, 'click', function(event) {
-       marker = new google.maps.Marker({position: event.latLng, map: map, icon: icons[0]});
+       var e = document.getElementById("type");
+       var type = e.options[e.selectedIndex].value;
+       marker = new google.maps.Marker({position: event.latLng, map: map, icon: icons[type]});
        latLng = {lat: marker.position.lat(), lng: marker.position.lng()}
        //console.log(latLng)
   });
