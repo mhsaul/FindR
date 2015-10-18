@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,11 +26,32 @@ namespace FindR
         public MainPage()
         {
             this.InitializeComponent();
+            
         }
 
         private void AddPlace_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(AddPlace));
+        }
+
+        private void Bathroom_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Results), "bathroom");
+        }
+
+        private void Bike_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Results),"bike");
+        }
+
+        private void Water_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Results), "water");
+        }
+
+        private void Wifi_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Results),"wifi");
         }
     }
 }
