@@ -6,8 +6,11 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.VoiceCommands;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
+using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,6 +27,7 @@ namespace FindR
     /// </summary>
     sealed partial class App : Application
     {
+        Frame rootFrame;
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -37,7 +41,8 @@ namespace FindR
             this.Suspending += OnSuspending;
         }
         private static MainViewModel _viewModel;
-        public static MainViewModel ViewModel {
+        public static MainViewModel ViewModel
+        {
             get
             {
                 if (_viewModel == null)
@@ -62,7 +67,7 @@ namespace FindR
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
 
 #if DEBUG
@@ -71,8 +76,13 @@ namespace FindR
                 this.DebugSettings.EnableFrameRateCounter = true;
             }
 #endif
+
+            var vcdFile = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///VCD.xml"));
+
+            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(vcdFile);
+
             SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;  // Handle back requests
-            Frame rootFrame = Window.Current.Content as Frame;
+            rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
@@ -138,6 +148,60 @@ namespace FindR
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            base.OnActivated(args);
+            if (args.Kind != ActivationKind.VoiceCommand)
+            {
+                return;
+            }
+
+            var commandArgs = args as VoiceCommandActivatedEventArgs;
+            SpeechRecognitionResult sr = commandArgs.Result as SpeechRecognitionResult;
+
+            string spokenText = sr.Text.ToLower();
+
+            string type ="";
+
+            if (spokenText.Contains("bathroom") || spokenText.Contains("washroom"))
+            {
+                type = "bathroom";
+            } else if (spokenText.Contains("wifi"))
+            {
+                type = "wifi";
+            }else if (spokenText.Contains("water") || spokenText.Contains("fountain"))
+            {
+                type = "water";
+            }else
+            {
+                type = "bike";
+            }
+
+            if (rootFrame == null)
+            {
+                // Create a Frame to act as the navigation context and navigate to the first page
+                rootFrame = new Frame();
+
+                rootFrame.Navigated += OnNavigated;
+                rootFrame.NavigationFailed += OnNavigationFailed;
+
+                SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;  // Handle back requests
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                rootFrame.CanGoBack ?
+                AppViewBackButtonVisibility.Visible :
+                AppViewBackButtonVisibility.Collapsed;
+                
+
+                // Place the frame in the current Window
+                Window.Current.Content = rootFrame;
+            }
+            
+            rootFrame.Navigate(typeof(Results), type);
+
+            // Ensure the current window is active
+            Window.Current.Activate();
         }
     }
 }

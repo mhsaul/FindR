@@ -13,7 +13,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
-        <Maps:MapControl x:Name="resultsMap"/>
+        <Maps:MapControl x:Name="resultsMap" MapServiceToken="y5LOol3gMBejfMCgOHqB~pPaVfTGa5srXL9gZSp3v5w~AqoGCrppgpQ3KQr4OVnxCFLAcYUcskx2_qChYPnoub1veNPoEwdqmVf1jEivgwiz"/>
         <ListBox x:Name="listBox" Grid.Row="1" SelectionChanged="SeletionChanged" />
     </Grid>
 </Page>

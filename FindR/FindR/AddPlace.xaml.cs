@@ -33,6 +33,11 @@ namespace FindR
             this.InitializeComponent();
         }
 
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            locMap.Center = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
+        }
+
         private void EnableMap()
         {
             locMap.IsEnabled = true;

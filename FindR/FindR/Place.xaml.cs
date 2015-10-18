@@ -43,5 +43,11 @@ namespace FindR
 
             map.MapElements.Add(icon);
         }
+
+        private void CommentAdd_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var place = (DataContext as PlaceViewModel);
+            Frame.Navigate(typeof(AddComment), place.Id);
+        }
     }
 }
