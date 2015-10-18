@@ -1,4 +1,3 @@
-<html>
 
 <?php 
 
@@ -36,6 +35,8 @@ $query = "SELECT id FROM `findr`.`locations` WHERE
 $write = mysqli_query($connection,$query);
 
 
+//$arr = array();
+
 //Andrew: my code is maintainable!
 if(mysqli_num_rows($write) > 0){
 	$row = mysqli_fetch_assoc($write);
@@ -44,21 +45,33 @@ if(mysqli_num_rows($write) > 0){
 		
 		//from current id
 		//get location data
-		$curQuery = "SELECT `lat`, `long`, `type`, `name`, `details` FROM `findr`.`locations`WHERE id = '$curId'";
+		$curQuery = "SELECT `lat`, `long`, `type`, `name`, `details`, `id` FROM `findr`.`locations`WHERE id = '$curId'";
 		$curWrite = mysqli_query($connection,$curQuery);
 		$curRow = mysqli_fetch_assoc($curWrite);
 		
+		echo $curRow["id"] . " $$$$$ ";
 		echo $curRow["lat"] . " $$$$$ ";
 		echo $curRow["long"] . " $$$$$ ";
 		echo $curRow["type"] . " $$$$$ ";
 		echo $curRow["name"] . " $$$$$ ";
 		echo $curRow["details"] . " $$$$$ ";
 		
+		//$arr["lat"] = $curRow["lat"];
+		//$arr["long"] = $curRow["long"];
+		//$arr["type"] = $curRow["type"];
+		//$arr["name"] = $curRow["name"];
+		//$arr["details"] = $curRow["details"];
+		
+		//$arr = array_merge($arr, $curRow);
+		//echo json_encode($arr);
+		
 		//get image data
 		$curQuery = "SELECT `url` FROM `findr`.`images`WHERE id = '$curId'";
 		$curWrite = mysqli_query($connection,$curQuery);
 		$curRow = mysqli_fetch_assoc($curWrite);
 		echo $curRow["url"] . " $$$$$ ";
+		//$arr["url"] = $curRow["url"];
+		//$arr = array_merge($arr, $curRow);
 		
 		//get rating data
 		$curQuery = "SELECT `rating` FROM `findr`.`ratings`WHERE id = '$curId'";
@@ -66,7 +79,6 @@ if(mysqli_num_rows($write) > 0){
 		
 		$numRatings = 0;
 		$totalRatings = 0;
-		
 		if(mysqli_num_rows($curWrite) > 0){
 			$curRow = mysqli_fetch_assoc($curWrite);
 			while($curRow){
@@ -77,9 +89,11 @@ if(mysqli_num_rows($write) > 0){
 		}
 		if($numRatings == 0){//fencepost case
 			echo "0";
+			//$arr["rating"] = 0;
 		}
 		else{
 			echo ($totalRatings / $numRatings);
+			//$arr["rating"] = ($totalRatings / $numRatings);
 		}
 		echo " $$$$$ ";
 		
@@ -106,11 +120,15 @@ if(mysqli_num_rows($write) > 0){
 			while($curRow){
 				echo $curRow["tag"] . " ~~~~~ ";
 				echo $curRow["upvotes"] . " ~~~~~ ";
+				//$arr["tag"] = $curRow["tag"];
+				//$arr["tagUpvotes"] = $curRow["upvotes"];
 				$curRow = mysqli_fetch_assoc($curWrite);
 			}
 		}
 		echo " $$$$$ ";
 
+		//echo json_encode($arr);
+		
 		$row = mysqli_fetch_assoc($write);
 		echo "<br>";
 	}
@@ -121,9 +139,5 @@ if(mysqli_num_rows($write) > 0){
 //mysqli_close($connection);
 
 ?>
-
-</body>
-
-</html>
 
 
