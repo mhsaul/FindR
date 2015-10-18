@@ -33,6 +33,11 @@ namespace FindR
             this.InitializeComponent();
         }
 
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            locMap.Center = (await new Geolocator().GetGeopositionAsync()).Coordinate.Point;
+        }
+
         private void EnableMap()
         {
             locMap.IsEnabled = true;
@@ -90,6 +95,7 @@ namespace FindR
             {
                 using (var client = new HttpClient())
                 {
+                    client.BaseAddress = new Uri("http://173.250.206.173:8080/");
                     var param = new Dictionary<string, string>();
                     param.Add("lat", lat.ToString());
                     param.Add("long", lon.ToString());
@@ -119,7 +125,7 @@ namespace FindR
                     try
                     {
                         this.IsEnabled = false;
-                        var resp = await client.PostAsync("http://173.250.206.173:8080/findR/php/postLocation.php", new FormUrlEncodedContent(param));
+                        var resp = await client.PostAsync("findR/php/input/postLocation.php", new FormUrlEncodedContent(param));
                         if (resp.IsSuccessStatusCode)
                         {
                             new MessageDialog("Sucessfully added this location to our database!", "Added Place").ShowAsync();

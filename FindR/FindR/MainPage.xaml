@@ -16,10 +16,10 @@
         <Pivot Title="FindR for Windows 10">
             <PivotItem Header="What would you like?">
                 <StackPanel>
-                    <TextBlock Text="Bathrooms" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
-                    <TextBlock Text="Bike Racks" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
-                    <TextBlock Text="Water" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
-                    <TextBlock Text="WiFi" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
+                    <TextBlock Text="Bathrooms" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12" Tapped="Bathroom_Tapped"/>
+                    <TextBlock Text="Bike Racks" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12" Tapped="Bike_Tapped"/>
+                    <TextBlock Text="Water" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12" Tapped="Water_Tapped"/>
+                    <TextBlock Text="WiFi" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12" Tapped="Wifi_Tapped"/>
                 </StackPanel>
             </PivotItem>
         </Pivot>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+  <CommandSet xml:lang="en-us" Name="FindrCommands">
+    <CommandPrefix>Findr</CommandPrefix>
+    <Example>Find me a bathroom</Example>
+
+    <Command Name="findPlace">
+      <Example>Find me a bathroom</Example>
+      <ListenFor>find [me] [a] {room}</ListenFor>
+      <Feedback>Let's see what's nearby...</Feedback>
+      <Navigate/>
+    </Command>
+
+    <PhraseList Label="room">
+      <Item>bathroom</Item>
+      <Item>washroom</Item>
+      <Item>water</Item>
+      <Item>drinking fountain</Item>
+      <Item>fountain</Item>
+      <Item>wifi</Item>
+      <Item>bike rack</Item>
+    </PhraseList>
+
+  </CommandSet>
+</VoiceCommands>

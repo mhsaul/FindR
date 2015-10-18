@@ -1,3 +1,27 @@
+function validateForm() {
+    var n = document.forms["newLocation"]["form-name"].value;
+    var description = document.forms["newLocation"]["form-desc"].value;
+    var t = document.forms["newLocation"]["type"].value;
+    if (!objectPlaced || n == null || n == "" || description == null || description == "" || t == null || t == "") {
+        //alert("Please enter all information (Name, Description, Type, Location).");
+        alert("Bitch, don't even try that shit");
+        return false;
+    }
+    else {
+        if (t == "0")
+            t = "bathroom";
+        else if (t == "1")
+            t = "water";
+        else if (t == "2")
+            t = "cycling";
+        else
+            t = "wifi";
+        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{"lat": markerLat}, {"long": markerLng}, {"type": t}, {"details": description}], "post");
+    }
+    return false;
+}
+
+
 var x = document.getElementById("demo");
   
 function getLocation() {
@@ -29,18 +53,24 @@ function post(path, params, method) {
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
+    length = params.length;
+    for (var i = 0; i < length; i++) {
+    for(var key in params[i]) {
+        if(params[i].hasOwnProperty(key)) {
+            console.log(key);
+            console.log(params[i][key]);
             var hiddenField = document.createElement("input");
             hiddenField.setAttribute("type", "hidden");
             hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
+            hiddenField.setAttribute("value", params[i][key]);
 
             form.appendChild(hiddenField);
          }
     }
-
+    }
+    //var submitButton = document.createElement("button");
+    //submitButton.setAttribute("type", "submit");
+    //form.appendChild(submitButton);
     document.body.appendChild(form);
     form.submit();
 }
