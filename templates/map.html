@@ -3,11 +3,11 @@
   <head>
     <style type="text/css">
       html, body { height: 100%; margin: 0; padding: 0; }
-      #map { height: 100%; }
+      #map { height: 100%; width: 80%; }
     </style>
     <script src="../static/locations.js"></script>
   </head>
-  <body onload="getLocation()">
+  <body onload="getLocation()" onclick="getLocationClick()">
 
     <div id="map"></div>
 
@@ -17,6 +17,15 @@
 
 
     <script type="text/javascript">
+function getLocationClick() {
+    google.maps.event.addListener(map, 'click', function(event) {
+       marker = new google.maps.Marker({position: event.latLng, map: map});
+       latLng = {lat: marker.position.lat(), lng: marker.position.lng()}
+       console.log(latLng)
+  });
+}
+
+
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(initMap);
