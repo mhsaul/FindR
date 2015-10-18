@@ -1,7 +1,8 @@
-<html>
-
 <?php 
+header("Location http://microsoft.com");
+die();
 
+echo "<html>"
 //connect to sqlServer
 $connection = mysqli_connect('127.0.0.1',"root",""); //change ip to suit needs
 if(!$connection){
