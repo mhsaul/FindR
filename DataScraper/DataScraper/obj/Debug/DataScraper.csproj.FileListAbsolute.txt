@@ -1,0 +1,6 @@
+C:\Enlistment\Personal\DataScraper\DataScraper\bin\Debug\DataScraper.exe.config
+C:\Enlistment\Personal\DataScraper\DataScraper\bin\Debug\DataScraper.exe
+C:\Enlistment\Personal\DataScraper\DataScraper\bin\Debug\DataScraper.pdb
+C:\Enlistment\Personal\DataScraper\DataScraper\obj\Debug\DataScraper.csprojResolveAssemblyReference.cache
+C:\Enlistment\Personal\DataScraper\DataScraper\obj\Debug\DataScraper.exe
+C:\Enlistment\Personal\DataScraper\DataScraper\obj\Debug\DataScraper.pdb
