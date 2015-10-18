@@ -1,3 +1,15 @@
+function validateForm() {
+    var name = document.forms["newLocation"]["form-name"].value;
+    var description = document.forms["newLocation"]["form-desc"].value;
+    var type = document.forms["newLocation"]["type"].value;
+    if (!objectPlaced || name == null || name == "" || description == null || description == "" || type == null || type == "") {
+        //alert("Please enter all information (Name, Description, Type, Location).");
+        alert("Bitch, don't even try that shit");
+        return false;
+    }
+}
+
+
 var x = document.getElementById("demo");
   
 function getLocation() {
