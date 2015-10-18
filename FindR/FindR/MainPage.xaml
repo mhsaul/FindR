@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="FindR.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FindR"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Add" Tapped="AddPlace_Tapped"/>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot Title="FindR for Windows 10">
+            <PivotItem Header="What would you like?">
+                <StackPanel>
+                    <TextBlock Text="Bathrooms" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
+                    <TextBlock Text="Bike Racks" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
+                    <TextBlock Text="Water" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
+                    <TextBlock Text="WiFi" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,0,0,12"/>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
