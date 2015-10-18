@@ -1,3 +1,12 @@
+function initMap() {
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    scrollwheel: false,
+    zoom: 8
+  });
+}
+
 function newLocation() {
     alert("HELLO")
 }
@@ -30,8 +39,7 @@ function post(path, params, method) {
     form.submit();
 }
 
-function httpGetAsync(theUrl, callback)
-{
+function httpGetAsync(theUrl, callback) {
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() { 
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
@@ -39,4 +47,10 @@ function httpGetAsync(theUrl, callback)
     }
     xmlHttp.open("GET", theUrl, true); // true for asynchronous 
     xmlHttp.send(null);
+}
+
+function Location(latitude, longitude, type) {
+    this.lat = latitude;
+    this.lon = longitude;
+    this.type = type;
 }
