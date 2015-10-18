@@ -10,4 +10,8 @@ def index():
 def map():
     return render_template('map.html')
 
+@app.route('/template/data.json')
+def data():
+    return render_template('data.json')
+
 app.run(debug=True)

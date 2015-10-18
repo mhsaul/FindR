@@ -26,3 +26,14 @@
 .form-control {
     overflow: hidden;
 }
+
+.btn-group-vertical {
+    width:10%;
+}
+.btn-group{
+    display:inline-block;
+    height: 60%;
+}
+
+#map {
+}

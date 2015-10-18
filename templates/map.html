@@ -3,7 +3,7 @@
     <head>
         <style type="text/css">
             html, body { height: 100%; margin: 0; padding: 0; }
-            #map { height: 100%; width: 80%; }
+            #map { height: 70%; width: 90%; display: inline; position:absolute; right:0px;}
         </style>
         <link rel="stylesheet" type="text/css" href="../static/style.css">
         <link rel="stylesheet" type="text/css" href="../static/bootstrap.min.css">
@@ -41,6 +41,13 @@
                 </ul>
         </div>
         </div>
+    <div class="btn-group-vertical">
+    <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default">Left</button>
+        <button type="button" class="btn btn-default">Middle</button>
+        <button type="button" class="btn btn-default">Right</button>
+    </div>
+    </div>
     <div id="map"></div>
 
     <script type="text/javascript">
@@ -94,16 +101,5 @@ function initMap(position) {
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2c1j6Fu60pvqyZmQWuosgOdYbq8lBDXc&callback=initMap">
     </script>
-
-
-
-
-
-<button onclick="getLocation()">Try It</button>
-<span class="glyphicons glyphicons-bicycle">h.</span>
-
-<p id="demo"></p>
-
-
 </body>
 </html>

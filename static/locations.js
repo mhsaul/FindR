@@ -16,7 +16,7 @@ function validateForm() {
             t = "cycling";
         else
             t = "wifi";
-        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{"lat": markerLat}, {"long": markerLng}, {"type": t}, {"details": description}], "post");
+        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{"lat": markerLat}, {"long": markerLng}, {"name": n}, {"type": t}, {"details": description}], "post");
     }
     return false;
 }
