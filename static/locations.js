@@ -4,7 +4,7 @@ function validateForm() {
     var t = document.forms["newLocation"]["type"].value;
     if (!objectPlaced || n == null || n == "" || description == null || description == "" || t == null || t == "") {
         //alert("Please enter all information (Name, Description, Type, Location).");
-        alert("Bitch, don't even try that shit");
+        alert("Please enter all information");
         return false;
     }
     else {
@@ -16,7 +16,7 @@ function validateForm() {
             t = "cycling";
         else
             t = "wifi";
-        post("../php/input/postLocation.php", {'lat': markerLat}, 'post');
+        post("http://173.250.206.173:8080/findR/php/input/postLocation.php", [{'lat': markerLat}, {'long': markerLng}, {'type': t}, {'name': n}, {'details': description}], 'post');
     }
 }
 
@@ -29,11 +29,6 @@ function getLocation() {
     } else { 
         x.innerHTML = "Geolocation is not supported by this browser.";
     }
-}
-
-function showPosition(position) {
-    position.coords.latitude;
-    position.coords.longitude;  
 }
 
 function newLocation() {
@@ -50,23 +45,28 @@ function post(path, params, method) {
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
+    form.setAttribute("id", "myForm");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
-    for(var key in params) {
-        if(params.hasOwnProperty(key)) {
-            console.log(key);
-            console.log(params[key]);
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", params[key]);
+    var length = params.length;
+    for (var i = 0; i < length; i++) {
+        for(var key in params[i]) {
+            if(params[i].hasOwnProperty(key)) {
+                console.log(key);
+                console.log(params[i][key]);
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "text");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[i][key]);
 
-            form.appendChild(hiddenField);
-         }
+                form.appendChild(hiddenField);
+             }
+        }
     }
-
+    var submitButton = document.createElement("button");
+    submitButton.setAttribute("type", "submit");
+    form.appendChild(submitButton);
     document.body.appendChild(form);
-    form.submit();
 }
 
 function httpGetAsync(theUrl, callback) {
