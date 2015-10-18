@@ -1,0 +1,7 @@
+function newLocation() {
+    
+}
+
+function findLocations() {
+
+}
