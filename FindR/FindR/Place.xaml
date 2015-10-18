@@ -1,0 +1,29 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FindR"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="FindR.Place"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot Title="{Binding Name}">
+            <PivotItem Header="details">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Maps:MapControl x:Name="map" ZoomLevel="15"/>
+                    <TextBlock Grid.Row="1" Text="{Binding Details}" Style="{ThemeResource BodyTextBlockStyle}" Margin="0,12"/>
+                </Grid>
+
+            </PivotItem>
+            <PivotItem Header="comments">
+                <ListView x:Name="comments" ItemsSource="{Binding Comments}"/>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
