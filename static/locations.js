@@ -1,11 +1,27 @@
 function validateForm() {
-    var name = document.forms["newLocation"]["form-name"].value;
+    var n = document.forms["newLocation"]["form-name"].value;
     var description = document.forms["newLocation"]["form-desc"].value;
-    var type = document.forms["newLocation"]["type"].value;
-    if (!objectPlaced || name == null || name == "" || description == null || description == "" || type == null || type == "") {
+    var t = document.forms["newLocation"]["type"].value;
+    if (!objectPlaced || n == null || n == "" || description == null || description == "" || t == null || t == "") {
         //alert("Please enter all information (Name, Description, Type, Location).");
         alert("Bitch, don't even try that shit");
         return false;
+    }
+    else {
+        if (t == "0")
+            t = "bathroom";
+        else if (t == "1")
+            type = "water";
+        else if (t == "2")
+            t = "cycling";
+        else
+            t = "wifi";
+        console.log(markerLat);
+        console.log(markerLng);
+        console.log(t);
+        console.log(n);
+        console.log(description);
+        post("../php/input/postLocation.php", [{lat: markerLat}, {lng: markerLng}, {type: t}, {name: n}, {details: description}], "post");
     }
 }
 

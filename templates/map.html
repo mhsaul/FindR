@@ -23,8 +23,8 @@
             
             </button>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                    <form id="newLocation" action="../php/input/postLocation.php" onsubmit="return validateForm()" method="post">
-                    <li><input type="text" id="form-name" class="form-control" placeholder="Name" name="Name" size=32></li>
+                    <form id="newLocation" onsubmit="return validateForm()">
+                    <li><input type="text" id="form-name" class="form-control" placeholder="Name" size=32></li>
                     <li><textarea id="form-desc" class="form-control" placeholder="Description" rows="4" cols="35"></textarea>
                     <li>
                         <div class="form-group">
@@ -43,21 +43,19 @@
         </div>
     <div id="map"></div>
 
-
-
-
-
-
     <script type="text/javascript">
     var baseurl = "https://raw.githubusercontent.com/Saulmil/FindR/master/images/";
     var icons = [baseurl + "toilet.png", baseurl + "water.png", baseurl + "cycling.png", baseurl + "wifi.png"];
-    console.log(icons.toilet)
     var objectPlaced = false;
+    var markerLat, markerLng;
 function getLocationClick() {
     google.maps.event.addListener(map, 'click', function(event) {
         var e = document.getElementById("type");
         var type = e.options[e.selectedIndex].value;
         if (!objectPlaced) {
+            console.log(event.latLng.lat());
+            markerLat = event.latLng.lat();
+            markerLng = event.latLng.lng();
             marker = new google.maps.Marker({position: event.latLng, map: map, icon: icons[type]});
             latLng = {lat: marker.position.lat(), lng: marker.position.lng()}
             objectPlaced = true;
